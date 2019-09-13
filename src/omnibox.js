@@ -42,20 +42,22 @@ chrome.omnibox.onInputChanged.addListener(function(searchQuery, sendSuggestions)
 
 
 chrome.omnibox.onInputEntered.addListener(function(content, disposition) {
+  const url = (content.startsWith("https")) ? content : `https://search.maven.org/search?q=${content}`;
+
   switch (disposition) {
     // Shift + Command + Enter
     case "newForegroundTab":
-      chrome.tabs.create({url: content, active: true})
+      chrome.tabs.create({url: url, active: true})
       break;
 
     // Command + Enter
     case "newBackgroundTab":
-      chrome.tabs.create({url: content, active: false})
+      chrome.tabs.create({url: url, active: false})
       break;
 
     // Enter
     default:
-      chrome.tabs.update(null, {url: content});
+      chrome.tabs.update(null, {url: url});
       break;
   }
 });

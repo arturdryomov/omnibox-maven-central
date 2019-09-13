@@ -3,7 +3,7 @@
 
   "name": "Maven Central Search",
   "description": "Adds an “mvn” omnibox command for the Maven Central.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "icons": {
     "512": "icons/512.png"
   },
